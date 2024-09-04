@@ -1,0 +1,48 @@
+.container {
+ padding: 14px 32px;
+ background-color:var(--secondary-bg) ;
+}
+.heading{
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.form{
+    border:1.5px solid var(--border-color);
+    padding: 12px;
+}
+.protocolHeading{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 24px 0px 24px;
+    font-size: 16x;
+}
+.protocolbody{
+    padding: 0px 24px 24px 24px;
+}
+.protocolInfo{
+    background-color: var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.url_Input{
+    width: 90%;
+    background-color: var(--border-color);
+    outline: none;
+    border: none;
+    height: 32px;
+    font-size: medium;
+    padding-inline-start:12px ;
+    border:1.5px solid #575757;
+    border-radius: 6px;
+    margin: 10px;
+}
+.sliderContainer{
+    padding: 30px 10px;
+}
+.methodDropDownContainer{
+    padding: 10px;
+}

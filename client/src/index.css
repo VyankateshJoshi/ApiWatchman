@@ -1,0 +1,44 @@
+:root {
+    /* Light Theme */
+    --light-primary-bg: #FFFFFF;
+    --light-secondary-bg: #F5F5F5;
+    --light-primary-text: #333333;
+    --light-secondary-text: #666666;
+    --light-primary-accent: #0066CC;
+    --light-secondary-accent: #00A86B;
+    --light-highlight: #FFA500;
+    --light-border-color: rgb(231, 229, 229);
+  
+    /* Dark Theme */
+    --dark-primary-bg: #1A1A1A;
+    --dark-secondary-bg: #2C2C2C;
+    --dark-primary-text: #E0E0E0;
+    --dark-secondary-text: #B0B0B0;
+    --dark-primary-accent: #4D94FF;
+    --dark-secondary-accent: #00CC82;
+    --dark-highlight: #FFB84D;
+    --dark-border-color: #4A4A4A; 
+  
+    /* Default to light theme */
+    --primary-bg: var(--light-primary-bg);
+    --secondary-bg: var(--light-secondary-bg);
+    --primary-text: var(--light-primary-text);
+    --secondary-text: var(--light-secondary-text);
+    --primary-accent: var(--light-primary-accent);
+    --secondary-accent: var(--light-secondary-accent);
+    --highlight: var(--light-highlight);
+    --border-color: var(--light-border-color);
+  }
+  
+  /* Dark theme class */
+  .dark-theme {
+    --primary-bg: var(--dark-primary-bg);
+    --secondary-bg: var(--dark-secondary-bg);
+    --primary-text: var(--dark-primary-text);
+    --secondary-text: var(--dark-secondary-text);
+    --primary-accent: var(--dark-primary-accent);
+    --secondary-accent: var(--dark-secondary-accent);
+    --highlight: var(--dark-highlight);
+  }
+  
+  /* Example usage */

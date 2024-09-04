@@ -1,0 +1,110 @@
+:root {
+   /* Your existing theme variables here */
+ 
+   /* Button-specific variables */
+   --btn-font-size: 14px;
+   --btn-font-weight: 600;
+   --btn-border-radius: 8px;
+   --btn-padding: 8px;
+ 
+   /* Button sizes */
+   --btn-sm-height: 28px;
+   --btn-sm-width: 74px;
+   --btn-m-height: 36px;
+   --btn-l-height: 36px;
+ 
+   /* Lighter versions of accent colors for hover/focus */
+   --primary-accent-light: color-mix(in srgb, var(--primary-accent) 80%, white);
+   --secondary-accent-light: color-mix(in srgb, var(--secondary-accent) 80%, white);
+ }
+ 
+ /* Primary Buttons */
+ .primary_btn_sm, .primary_btn_m, .primary_btn_l {
+   font-size: var(--btn-font-size);
+   font-weight: var(--btn-font-weight);
+   color: var(--primary-bg);
+   background-color: var(--primary-accent);
+   outline: transparent;
+   border: none;
+   border-radius: var(--btn-border-radius);
+   padding: var(--btn-padding);
+   transition: background-color 0.3s ease;
+ }
+ 
+ /* Secondary Buttons */
+ .secondary_btn_sm, .secondary_btn_m, .secondary_btn_l {
+   font-size: var(--btn-font-size);
+   font-weight: var(--btn-font-weight);
+   color: var(--primary-text);
+   background-color: var(--primary-bg);
+   outline: transparent;
+   border: 1px solid var(--secondary-text);
+   border-radius: var(--btn-border-radius);
+   transition: border-color 0.3s ease, color 0.3s ease;
+ }
+ 
+ /* Small Buttons */
+ .primary_btn_sm, .secondary_btn_sm {
+   height: var(--btn-sm-height);
+   width: var(--btn-sm-width);
+ }
+ 
+ /* Medium Buttons */
+ .primary_btn_m, .secondary_btn_m {
+   height: var(--btn-m-height);
+   width: auto;
+ }
+ 
+ /* Large Buttons */
+ .primary_btn_l, .secondary_btn_l {
+   height: var(--btn-l-height);
+ }
+ 
+ /* Specific adjustments */
+ .primary_btn_m {
+   padding: var(--btn-padding);
+ }
+ 
+ .secondary_btn_m {
+   width: var(--btn-sm-width);
+   border-width: 1.5px;
+ }
+ 
+ .secondary_btn_l {
+   width: 94px;
+ }
+ 
+ /* Hover effects */
+ .primary_btn_sm:hover, .primary_btn_m:hover, .primary_btn_l:hover {
+   background-color: var(--primary-accent-light);
+ }
+ 
+ .secondary_btn_sm:hover, .secondary_btn_m:hover, .secondary_btn_l:hover {
+   border-color: var(--primary-accent);
+   color: var(--primary-accent);
+ }
+ 
+ /* Focus styles */
+ .primary_btn_sm:focus, .primary_btn_m:focus, .primary_btn_l:focus {
+   /* background-color: var(--primary-accent-light); */
+   /* outline: 2px solid var(--primary-accent-light); */
+   outline-offset: 2px;
+ }
+ 
+ .secondary_btn_sm:focus, .secondary_btn_m:focus, .secondary_btn_l:focus {
+   /* border-color: var(--primary-accent); */
+   color: var(--primary-accent);
+   /* outline: 2px solid var(--primary-accent-light); */
+   outline-offset: 2px;
+ }
+ 
+ /* Active styles */
+ .primary_btn_sm:active, .primary_btn_m:active, .primary_btn_l:active {
+   /* background-color: var(--primary-accent); */
+ }
+ 
+ .secondary_btn_sm:active, .secondary_btn_m:active, .secondary_btn_l:active {
+   /* background-color: var(--secondary-accent-light); */
+   border-color: var(--secondary-accent);
+   color: var(--primary-bg);
+ }
