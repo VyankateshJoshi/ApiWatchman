@@ -1,4 +1,6 @@
 
-
+# server 
 server/venv
+server/.env
+#client 
 client/node_modules
