@@ -2,6 +2,9 @@
 .container{
     background-color: var(--secondary-bg); 
 }
+.mainContent{
+    
+}
 .header{
     display: flex;
     justify-content: space-between;
@@ -10,6 +13,7 @@
     background-color:var(--secondary-bg);
     border-bottom: 0.5px solid #B9B9B9;
 }
+
 .body {
     display: flex;
     flex-direction: column;
@@ -23,4 +27,25 @@
 }
 .data{
     width: 70%;
+}
+.filtersContainer{
+    display: flex;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 24px;
+}
+.searchBox{
+    height:42px ;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid var(--border-color);
+    width: 40%;
+    padding-inline-start:12px ;
+    margin-left: 20px;
+}
+.monitorsListContainer{
+    border: 1px solid red;
+}
+.statusInfo{
+    display: flex;
 }
