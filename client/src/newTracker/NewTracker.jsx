@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./NewTracker.module.css"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import HttpIcon from '@mui/icons-material/Http';
 import commmonStyles from "../commmonStyles/commonStyles.module.css"
 import CustomSlider from '../components/CustomSlider/CustomSlider';
-import { MenuItem, Select, Slider } from '@mui/material';
+import { MenuItem, nativeSelectClasses, Select, Slider } from '@mui/material';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios'; import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const labels = {
-  1: '5 min',
-  2: '15 min',
-  3: '30 min',
-  4: '1 hr',
-  5: '4 hr',
-  6: '6 hr',
-  7: '12 hr',
-  8: '24 hr',
+  1: '5 minutes',
+  2: '15 minutes',
+  3: '30 minutes',
+  4: '1 hours',
+  5: '4 hours',
+  6: '6 hours',
+  7: '12 hours',
+  8: '24 hours',
 };
 const httpMethodNames = [
   'GET',
@@ -33,7 +34,8 @@ function NewTracker() {
   const [interval, setInterval] = useState(1)
   const [requestTimeOut, setRequestTimeOut] = useState(1)
   const [selectedMethod, setSelectedMethod] = useState('HEAD')
-  const [requestBody,setRequestBody] = useState({})
+  const [requestBody, setRequestBody] = useState({})
+  const [disableSubmit, setDisableSubmit] = useState(true)
   const navigate = useNavigate()
   const handleChangeInterval = (event, newValue) => {
     setInterval(newValue);
@@ -41,9 +43,47 @@ function NewTracker() {
   const handleChangeRequestTimeOut = (event, newValue) => {
     setRequestTimeOut(newValue);
   };
+  const isValidURL = (string) => {
+    try {
+      new URL(string);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    // Enable button if URL is valid
+    setDisableSubmit(!isValidURL(url));
+  }, [url]);
+  const handleCreateMonitor = async () => {
+    let resp
+    try {
+      resp = await axios.post("http://localhost:6969/add-monitor", {
+        "path": url,
+        "method": selectedMethod,
+        "interval": `${labels[interval]}`,
+        "timeout": `${requestTimeOut} seconds`,
+        "request_body": requestBody,
+        "response_body": {},
+        "query_params": {},
+        "headers": { "Accept": "application/json" },
+        "user_id": 1
+      })
+      console.log(resp)
+      toast("New Watchmen Added")
+      setTimeout(() => {
+        navigate("/monitors")
+      }, 1000);
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <div className={styles.container}>
-      <button className={commmonStyles.secondary_btn_m} onClick={()=>navigate("/monitors")}><ArrowBackIosIcon sx={{ height: "10px" }} />Back</button>
+      <ToastContainer />
+      <button className={commmonStyles.secondary_btn_m} onClick={() => navigate("/monitors")}><ArrowBackIosIcon sx={{ height: "10px" }} />Back</button>
       <div className={styles.heading}>Add Tracker</div>
       <div className={styles.form}>
         <div className={styles.protocolInfo}>
@@ -105,15 +145,15 @@ function NewTracker() {
           <JSONInput
             id='a_unique_id'
             placeholder={requestBody}
-            onChange={(value)=>setRequestBody(value)}
+            onChange={(value) => setRequestBody(value)}
             locale={locale}
             height='200px'
             width='100%'
-            style={{borderRadius:"10px"}}
+            style={{ borderRadius: "10px" }}
           />
         </div>
 
-        <button className={commmonStyles.primary_btn_l}>Create WatchMen</button>
+        <button onClick={handleCreateMonitor} disabled={disableSubmit} className={commmonStyles.primary_btn_l}>Create WatchMen</button>
       </div>
 
     </div>

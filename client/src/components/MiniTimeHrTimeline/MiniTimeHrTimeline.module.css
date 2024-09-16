@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.hourBlock{
+height: 15px;
+width: 5px;
+border-radius: 2px;
+background-color: green;
+}
+
