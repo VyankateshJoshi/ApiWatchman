@@ -44,8 +44,19 @@
     margin-left: 20px;
 }
 .monitorsListContainer{
-    border: 1px solid red;
+  margin: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .statusInfo{
     display: flex;
+}
+
+.monitor{
+    border: 2px solid var(--border-color);
+    display: flex;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 4px;
 }
